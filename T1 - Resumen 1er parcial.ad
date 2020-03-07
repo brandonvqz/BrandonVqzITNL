@@ -1,0 +1,744 @@
+== Instituto Tecnológico de México Campus Nuevo Laredo
+*Alumno:* Brandon Vazquez Camarillo. +
+*No. Control:* 17100307. +
+
+== Modelo de cajas
+
+image::https://s3-us-west-2.amazonaws.com/devcodepro/media/tutorials/modelo-caja-css-t1.jpg[Modelo de cajas]
+
+Cada elemento dentro de un documento HTML se encuentra contenido en una caja, la cual cuenta con una serie de propiedades que afectaran el cómo se muestran los elementos. +
+Cada caja cuenta con un *Height y Width* (altura - anchura), ademas de poseer un *Padding, Border y Margin* (relleno - borde - margen) siendo estos quienes brindan un mayor control sobre los elementos a la hora de organizarlos. Cada Box model es creado automaticamente, sin embargo, el programador debera darle las propiedades al mismo mediante CSS.
+
+image::https://uniwebsidad.com/static/libros/imagenes/css/f0403.gif[CSS]
+
+Dentro de sus propiedades, podemos encontrar las siguientes:
+
+- *Content (Contenido):* Contenidos del HTML.  +
+- *Relleno (padding):* Espacio entre el contenido y el borde.  +
+- *Borde (border):* Línea que encierra completamente el contenido y su relleno.  +
+- *Imagen de fondo (background image):* Imagen que se muestra por detrás del contenido y el espacio de relleno.  +
+- *Color de fondo (background color):* Color que se muestra por detrás del contenido y el espacio de relleno.  +
+- *Margen (margin):* Separación entre la caja y el resto de cajas adyacentes. +
+
+El Padding y el Margin son transparentes, esto provoca que el espacio ocupado por el relleno muestre un color de fondo o una imagen (en caso de estar definidos).
+
+== Flujo del documento
+
+Es la manera en la que los elementos son desplegados en el documento.
+Dependiendo del tipo de elemento, estos se colocarán de la siguiente manera: +
+
+*Elementos de Bloque*
+
+- Siempre empiezan en una nueva línea, no se sitúan uno al lado del otro. +
+- Cada línea se completa con un único elemento, aún si su contenido es mínimo. +
+- El flujo es de arriba hacia abajo. +
+
+*Elementos de Línea* +
+
+- Se colocan en línea hasta que sus anchos lo permitan. +
+- Cuando completen una línea saltan a la siguiente. +
+- El flujo es de izquierda a derecha. +
+
+*En un flujo normal del documento:* +
+
+- De Bloque: +
+El ancho será todo el disponible de su contenedor padre. +
+El alto lo define su contenido. +
+- De Línea: +
+El ancho y el alto lo define el contenido
+
+*Elementos en flujo y fuera de flujo.* +
+
+- En Flujo: Los elementos en flujo reciben su espacio y ese
+espacio es respetado por los otros elementos en el flujo. +
+- Fuera de flujo: Si un elemento es flotado o posicionado absoluto
+entonces este elemento estará fuera de flujo y su espacio no será
+respetado por los otros elementos que si están en el flujo. +
+
+NOTE: Los elementos fuera de flujo son independientes. +
+Deberás asegurarte que no se presente una situación en la cual
+este elemento fuera de flujo se traslape a los que están en flujo.
+
+== Posicionamiento de cajas +
+En un flujo normal del documento, sus elementos tendrán una posición static. +
+Para remover un elemento del flujo cambiaremos el valor de su posición y usaremos valores de desplazamiento para moverlo del flujo desde un punto de referencia. +
+
+*Float* +
+Se usan para desplazar cajas a la izquierda o a la derecha
+Permitiendo que todo el contenido envuelva al elemento flotante. +
+Esta técnica era (y aún es) usada para crear layouts de columnas usando medidas de porcentaje. +
+Aunque su intención es hacer que texto flote alrededor de una imagen. +
+
+*Relativo* + 
+El punto de referencia será su posición original en el flujo. +
+Su posición en el flujo queda reservada. +
+
+*Absolute* +
+El punto de referencia sera su contenedor padre o el navegador
+Su posición en el flujo sera removida. +
+
+*Fixed* +
+El punto de referencia sera el navegador. +
+No hay espacio reservado en el flujo del documento. +
+
+*Sticky* +
+El elemento se posiciona normal en el flujo del documento
+pero al alcanzar cierta posición, cambia a fixed. +
+
+== Cascada +
+La cascada se refiere a que las declaraciones de estilo pueden estar en varios sitios y dependiendo este sitio, afectará a mas o menos elementos. +
+Cuando dos o mas reglas se aplican a un mismo elemento:
+
+- El navegador las aplica todas y prevalecerá siempre la última regla escrita.
+
+Cuando dos o mas reglas entran en conflicto:
+
+- Existen reglas para definir la precedencia.
+
+*La cascada*
+En proyectos grandes, con hojas de estilo complejas es habitual que varias reglas CSS entren "en conflicto" y se apliquen a un mismo elemento. +
+Cuando existe ambiguedad en la declaración de reglas su precedencia se establece en base a 3 factores:
+
+- Importancia: El origen, donde esta ubicado el estilo.
+- Especificidad: Es el peso del selector (que tan especifico es).
+- Orden: La última regla declarada "gana" y sobre-escribe a la anterior.
+
+=== Importancia
+- User Agent: Estilos por defecto del navegador.
+- De Usuario: Estilos que añade el usuario por ciertas razones.
+- De Autor: Estilos que declara el autor del documento.
+
+*Estilos por defecto (user agent styles)* +
+Cuando un documento HTML carece de estilos en realidad si tiene estilos. +
+Tiene los estilos por defecto aplicados por el navegador. +
+No es recomentable confiar en los estilos por defecto y siempre debemos especificar nuestros estilos en nuestra hoja de estilos. +
+
+*Estilos de usuario* +
+En los navegadores, el usuario puede definir, por ejemplo el tamaño del texto, color, etc. +
+Esto anula lo definido por el diseñador web, sus opciones prevalecen. +
+Aunque esto no es común y la mayoría de los usuarios no lo hacen. +
+Su empleo se limita a personas con problemas de vista que necesitan tamaños de fuente grande y colores vistosos y a usuarios avanzados con gran dominio de la configuracion del navegador. +
+A pesar del poco uso como programadores debemos saber esto. +
+
+*Estilos de autor*
+
+- Archivos externos. + 
+archivo.css
+- Declaración interna. + 
+<head><style>...</style></head>
+- Declaración en línea. +
+<tag style="property:value"></tag>
+
+=== Regla !important +
+La regla !important es un ganador seguro, le ganará incluso a los estilos en línea (en el html). +
+Si al final de una regla le agregamos el texto !important conseguiremos que tenga prioridad sobre todas las demás. +
+
+NOTE: El uso/abuso de important es considerado una mala práctica. +
+Es mejor mantener el CSS limpio, conocer como está estructurado y como trabaja en lugar de usar !important como un camino fácil para forzar la aplicación de una regla.
+
+Una regla !important de usuario tendrá prioridad sobre una de autor. +
+
+La única manera de que una regla !important no se aplique es que exista otra !important mas adelante en el CSS con igual o mayor especificidad. +
+
+== Especificidad +
+Si dos selectores se aplican a un mismo elemento, ganará el mas específico. +
+Entre mas específico sea un selector, tendrá mas peso. +
+Cuando la especificidad es la misma, se toma el cuenta el orden de los selectores. +
+El diferente peso de los selectores es la principal razón de que alguna regla de nuestro CSS no se aplique. +
+En muchos casos una regla no se aplica debido a que en algún lugar del código CSS se ha definido un selector más específico. +
+El navegador asignará un valor de especificidad siguiendo un conjunto de reglas estándar de especificidad. +
+
+NOTE: Cuanto mas específico es un selector, mas importancia tiene la regla. +
+A igual especificidad, se aplica la última regla declarada.
+
+== Jerarquia de Especificidad +
+Cada selector tiene su lugar en la jerarquía de especificidad.
+Hay cuatro categorías que definen el nivel de especificidad de un selector. +
+
+*Calculo del valor de especifidad:* +
+
+- Etiqueta HTML (Inline style) = 1000 pts.
+- ID = 100 pts.
+- Clase, pseudoclase y atributo = 10 pts.
+- Elemento y pseudoelemento = 1 pts.
+
+*En resumen:*
+
+- Hay cuatro categorías que definen el nivel de especificidad.
+- Cada selector tiene un lugar en la jerarquía de la especificidad.
+- Si dos o mas selectores se aplican a un mismo elemento, ganará el que tenga mas especificidad.
+- Si dos o mas selectores tienen la misma especificidad, ganará el último que se haya declarado.
+- La última regla definida sobre-escribe cualquier regla previa con la que tenga conflicto.
+
+== Orden +
+Cuando varios selectores CSS apuntan a el mismo elemento y tienen la misma especificidad se toma en cuenta el orden de en la declaración. +
+Asumiendo que la especificidad es la misma, el orden (precedencia) de los selectores importa. +
+Los estilos declarados "después" siempre "ganarán". +
+
+*Se toma en cuenta lo siguiente:*
+
+- El orden (precedencia) en el archivo CSS.
+- En caso de varias hojas de estilos también se toma en cuenta el orden de las hojas.
+
+== Tipos de selectores
+
+- *Básicos:* Selector universal, de etiqueta, de Identifiador y de clase.
+- *Relación:* Selecciona elementos basándonse en su relacion con otros elementos.
+- *Pseudo Selectores:* Palabaras clave agregadas a un selector para hacerlo más específico.
+- *Atributos:* Selecciona elementos basándose en sus atributos y sus valores.
+
+=== Selectores Basicos
+
+- ** Universal:* Todos los elementos
+- *h1 de Etiqueta:* Todas las etiquetas h1
+- *#id de Identificador:* El elemento que tenga asignado el identificador id.
+- *.class de Clase:* Todos los elementos que tengan asiganda la clase class.
+
+=== Selectores Relacionales
+
+- *div p* + 
+Descendiente Todos los elementos p que estén dentro de div.
+- *div > p* +
+Descendiente Directo, todos los elementos p que sean hijos directos de div.
+- *div + p* +
+Hermano Adyacente, el elemento p que sean hermano y este inmediatamente despues de div.
+- *div ~ p* +
+Hermano General, todos los elementos p que sean hermanos de div.
+
+=== Pseudoselectores
+
+Los pseudo selectores se dividen en dos grupos: *pseudo elementos y pseudo clases* y no son mas que llaves o palabras clave que se agregan a un selector. +
+Estas palabras clave no se refieren en si a elementos que existen
+en el documento html, sino a ubicaciones y partes de un elemento y los diferentes estados que este puede tener.
+
+- *Pseudo elementos:* Seleccionan solamente ciertas partes de un elemento o se referieren a su ubicación en el DOM. +
+*Pseudo clases:* Se refieren a los estados que puede tener un elemento. +
+*Dinámicas:* Se agregan y eliminan de los elementos por la interacción del usuario. +
+*Estructurales:* Se basan en la relación del elemento con otros elementos. +
+*De interfaz de usuario:* Tambien llamadas de estado, para elementos de formularios. +
+*Otras:* Son pseudo clases que no entran en las categorías previas. +
+
+NOTE: *Clase y Pseudo Clase* +
+En Css las clases son definidas por el usuario y su propósito es clasificar o agrupar reglas de estilo al contrario las pseudo clases son agregadas por el user agent (el navegador) de acuerdo al estado
+de los elementos. +
+Cada elemento puede tener diferentes estados que están en función de su naturaleza y de su interacción con el usuario. +
+Estos estados no están declarados o escritos en el código html pero podemos referirnos a ellos con las pseudo clases.
+
+*Pseudo elementos* 
+
+- *::first-letter* La primera letra de un elemento de bloque.
+- *::first-line* La primera línea de un elemento de bloque.
+- *::before* La ubicación que esta antes de un elemento.
+- *::after* La ubicación que esta después de un elemento.
+
+NOTE: ::before y ::after se usan frecuentemente con la propiedad content para insertar contenido.
+
+*Pseudo clases dinamicas*
+
+- *:link* Los enlaces que no se han visitado (Sólo para elementos <a>)
+- *:visited* Los enlaces que ya han sido visitados (Sólo para elementos <a>)
+- *:hover* Elemento cuando el usuario pasa el ratón sobre el
+- *:active* Elemento activo (solamente durante el click)
+- *:focus* Elemento que tiene el focus (hasta que lo pierda)
+
+*Pseudo clases estructurales*
+
+- *:first-child* El primer hijo del elemento seleccionado
+- *:last-child* El último hijo del elemento seleccionado
+- *:nth-child(n)* Enésimo hijo del elemento seleccionado
+- *:nth-last-child(n)* Enésimo hijo del elemento seleccionado (empezando del final hacia el inicio)
+- *:first-of-type* El primer hijo del elemento seleccionado del mismo tipo
+- *:last-of-type* El último hijo del elemento seleccionado del mismo tipo
+- *:nth-of-type* Enésimo hijo del elemento seleccionado del mismo tipo
+- *:nth-last-of-type* Enésimo hijo del elemento seleccionado (empezando del final hacia el inicio)
+- *:only-child* Si el elemento tiene un hijo único
+- *:only-of-type* Si el elemento no tiene hermanos del mismo tipo
+- *:empty* Los elementos que no tengan contenido
+- *:root* Siempre es <html>
+
+*Pseudo clases de interfaz*
+
+- *:enabled* Si el elemento (de formulario) esta habilitado
+- *:disabled* Si el elemento (de formulario) esta inhabilitado
+- *:checked* Si el elemento checkbox, radio button y option esta seleccionado
+- *:valid* Los navegadores proveen validación básica de acuerdo al tipo de elemento input
+- *:invalid* valid/invalid se asignan al elemento de acuerdo a la entrada del usuario
+- *:required* Selecciona elementos que tengan el atributo de required
+- *:optional* Selecciona elementos que no tegan el atributo de required
+
+*Otras pseudo clases*
+
+- *:target* Nos permite dar el estilo al destino de un enlace <a>
+- *:lang(en)* Los elementos que estén en el lenguaje especificado
+- *:not* Negación del selector
+
+== Variables de CSS
+
+*¿Qué son las variables en CSS (Custom properties)?* +
+Las variables en css no son mas que entidades definidas por el usuario, se establecen mediante la notacion de propiedades personalizadas *--* por ejemplo: +
+
+[source, CSS]
+----
+--color-principal: black;
+----
+
+Y para acceder las variables, ocupamos la funcion *var*, por ejemplo: +
+
+[source, css]
+----
+var (--color-principal);
+----
+
+A la hora de crear un sitio web muy grande, es preferible tomar en consideracion el uso de variables, puesto que hay valores repetidos, un mismo color, usado en cientos de lugares diferentes, por lo tanto, esto simplifica un poco el proceso. +
+Ademas de hacer el codigo mas facil de entender, por ejemplo: +
+
+[source, css]
+----
+--color-principal
+----
+
+Es mas facil de entender que: +
+
+[source, css]
+----
+#00ff00
+----
+
+*¿Cómo llevamos la variable a la practica?*
+Primero debemos de saber como se declara la variable en la practica, es de la siguiente forma: +
+
+[source, css]
+----
+elemento {
+        --color-principal-fondo: brown;
+        }
+----
+
+Y la forma en la que podemos mandarla a llamar o utilziarla es de la siguiente forma: +
+
+[source, css]
+----
+elemento {
+        background-color: var(--color-principal-fondo);
+        }
+----
+
+*¿Qué es el Scope en CSS?*
+
+Podemos definirlo como: +
+Scope es quien determina el rango de accesibilidad de una variable, ayuda a guardar valores separados. Existen 2 tipos de Scope en CSS, Global y Local.
+
+*Global:* Una variable global puede ser accesada desde cualquier lugar de CSS, es definida por *:root*, podemos ejemplificarlo de la siguiente manera:
+
+[source, css]
+----
+<span style="opacity: .6;">/*Asi se define.*/</span>
+:root{
+  --color-primario: #3A6FE2;
+  --color-enfasis: #FFFFFF;
+}
+ 
+<span style="opacity: .6;">/*Asi accedemos a ella.*/</span>
+.wrapper{
+  background: var(--color-primario);
+  background: var(--color-enfasis);
+}
+----
+
+*Local:* Al contrario de las Globales, las locales solamente pueden ser accesadas en el bloque de codigo en el que se definio, por ejemplo: 
+
+[source, css]
+----
+<span style="opacity: .6;">/*Se define sin el :root*/</span>
+.visibility-high{
+  --font-size: 24px;
+  --leading: 1.8;
+  font-size: var(--font-size);
+  line-height: var(--leading);
+}
+ 
+ /*Los valores son diferentes, por lo tanto estan definidas en otros sectores*/
+.visibility-low{
+  --font-size: 18px;
+  --leading: 1.6;
+  font-size: var(--font-size);
+  line-height: var(--leading);
+}
+----
+
+== Unidades de medida
+*Absolutas*
+
+- cm centimeter
+- mm milimeter
+- in inches
+
+*Tipográficas*
+
+- pt point
+- pc pica
+
+*Relativas*
+
+- px pixel
+- % percent
+
+*Relativas a la fuente*
+
+- em Tamano de fuente
+- rem Tamano de fuente de raíz
+- ex Aproximadamente la mitad del tamaño de fuente (altura de la letra x)
+- ch El ancho del caracter cero
+
+*Viewport*
+
+- vw Viewport width
+- vh Viewport height
+- vmin Viewport Mínimo
+- vmax Viewport Máximo
+
+*Absolutas*
+
+Son usadas cuando el tamaño del disposotivo de salida se conoce de antemano. + 
+Por ejemplo: Cuando la salida es en papel, no se recomienda para salida en pantalla ya que los tamaños de pantalla varían mucho.
+
+[source, css]
+----
+.UnCen { font-size: 1cm; }
+.UnMil { font-size: 1mm; }
+.UnaPlg { font-size: 1in; }
+----
+
+*Tipografias*
+
+Usadas también para hojas de estilos para impresión. +
+Por definición en una pulgada hay 72 pt y 12 pc.
+
+[source, css]
+----
+.UnPoint { font-size: 1pt; }
+.UnaPica { font-size: 1pc; }
+----
+
+*Relativas*
+
+Pixel y Percent son dos de las unidades mas usadas. Pixel se refiere a pixel fisico en pantalla. +
+Percent se refiere al valor proporcional del contenedor padre para esa propiedad. +
+Los pixeles nos porpocionan un control preciso en el diseño de layouts. +
+Los porcentajes son útiles para definir tamaños de fuentes, al definir una fuente como porcentaje nuestros textos siempre serán escalables. +
+
+[source, css]
+----
+.UnPix { font-size: 1px; }
+.UnPorc { font-size: 1%; }
+----
+
+*Relativa a la fuente*
+
+em Se refiere al tamaño de la fuente actual. +
+rem Se refiere al tamaño de la fuente del elemento raíz. +
+ex Se refiere aproximadamente la mitad del tamaño de la fuente actual. +
+ch Se refiere al ancho del caracter cero. +
+
+[source, css]
+----
+.UnEm { font-size: 1em; }
+.UnRem { font-size: 1rem; }
+.UnEx { font-size: 1ex; }
+----
+
+*Viewport*
+
+El viewport se refiere a la parte visible del documento, y se representa en porcentajes. +
+Sus valores cambian, si se modifica el tamaño de la ventana del navegador.
+
+- vh: Alto del viewport
+- vw: Ancho del viewport
+- vmin: Tomará el valor mínimo de entre el vh y el vw
+- vmax: Tomará el valor máximo de entre el vh y el vw
+
+[source, css]
+----
+.caja { width: 50vw; /* 50% del ancho del viewport */
+height:50vh; } /* 50% del alto del viewport */
+----
+
+== Colores
+
+En la web cada color es una combinación de tres colores: +
+Rojo, Verde y Azul.
+
+Existen diversos métodos para representar colores en CSS. +
+Y cada uno difiere en la forma en que representan los colores. +
+Los métodos para representar colores en CSS son:
+
+- Hexadecimal
+- RGB/RGBA
+- HSL/HSLA
+- Nombres de color
+
+*Hexadecimal*
+
+Cada color se representa usando un número hexadecimal de 2 dígitos precedidos por el carácter #. +
+Cada número representa la intensidad de su respectivo color. +
+El primer dígito es para el rojo, el segundo es el verde, el tercero es el azul. +
+Los valores pueden ir de menor a mayour desde 00 hasta FF.
+
+[source, css]
+----
+.caja { color: #FF0000;} /* Rojo */
+.caja { color: #00FF00;} /* Verde */
+.caja { color: #0000FF;} /* Azul */
+----
+
+Si el color tiene 3 pares de dígitos iguales, podemos abreviar la declaración de la siguiente forma:
+
+[source, css]
+----
+.caja { color: #FF00CC;} /* Amarillo */
+.caja { color: #F0C; } /* Amarillo (Notación abreviada) */
+----
+
+*RGB/RGBA*
+
+Este método también se basa en una combinación de los tres colores rojo, verde y azul. +
+Pero con la diferencia que usa valores decimales que van desde el 0 hasta el 255. +
+y su sintaxis es la de una función: rgb() o rgba(). +
+Para representar opacidad usa un valor decimal donde 0 es transparecia total y 1 opacidad total. 
+
+[source, css]
+----
+.caja { color: rgb(255,0,0);} /* Rojo */
+.caja { color: rgb(0,255,0);} /* Verde */
+.caja { color: rgb(0,0,255);} /* Azul */
+----
+
+Con transparencia:
+
+[source, css]
+----
+.caja { color: rgba(255,0,0,0.8);} /* Rojo 80% */
+.caja { color: rgba(0,255,0,0.5);} /* Verde 50% */
+.caja { color: rgba(0,0,255,0.3);} /* Azul 20% */
+----
+
+*HSL/HSLA*
+
+HSL significa Hue, Saturation y Lightness (Matiz, Saturación y Brillo).
+
+- Hue: El Matiz se toma de una paleta de 360 colores dispuestos en una circunferencia.
+- Saturation: 0% resultará en un color gris, 100% significa el color a su nivel mas vibrante.
+- Lightness: 0% resultará en un color negro y 100% resultará en un color blanco.
+- Alpha: Controla la opacidad, 0% resultará en total transparencia.
+
+Este método nos permite escojer de 3 a 5 colores base para nuestros diseños. +
+Y partiendo de estos jugar con la saturación y el color para ampliar la paleta de colores de nuestra aplicación web.
+
+[source, css]
+----
+.caja { color: hsl(0,100,50);} /* Rojo */
+.caja { color: hsl(120,100,50);} /* Verde */
+.caja { color: hsl(240,100,50);} /* Azul */
+----
+
+Con opacidad:
+
+[source, css]
+----
+.caja { color: hsla(0,100,50,80);} /* Rojo 80%*/
+.caja { color: hsla(120,100,50,50);} /* Verde 50%*/
+.caja { color: hsla(240,100,50,20);} /* Azul 20%*/
+----
+
+*Nombres de color*
+
+HTML5 define 147 nombres de color que son soportados por todos los navegadores:
+
+[source, css]
+----
+.caja { color: red;} /* Rojo */
+.caja { color: green;} /* Verde */
+.caja { color: blue;} /* Azul */
+----
+
+Con opacidad:
+
+[source, css]
+----
+.caja { color: red; opacity:0.8} /* Rojo 80%*/
+.caja { color: green; opacity:0.5} /* Verde 50%*/
+.caja { color: blue; opacity:0.2} /* Azul 20%*/
+----
+
+== Media Queries
+
+*Media Types*
+
+Los Media Types (tipos de medios) describen la categoría general de un dispositivo. Excepto cuando se utilizan los operadores lógicos not o only, el tipo de medio es opcional y será interpretada como all.
+
+- all: Apto para todos los dispositivos.  
+- print: Destinado a material impreso y visualización de documentos en una pantalla en el modo de vista previa de impresión.  
+- screen: Destinado principalmente a las pantallas.  
+- speech: Destinado a sintetizadores de voz.  
+
+*Operadores Lógicos*
+
+Se pueden redactar queries utilizando operadores lógicos, incluyendo not, and, y only. +
+Además se puede combinar múltiples queries en una lista separada por comas múltiples; si cualquiera de las queries en la lista es verdadera, la hoja de estilo asociada es aplicada. Esto es equivalente a una operación lógica "or".
+
+*AND*
+
+El operador and es usado para colocar juntas múltiples funciones multimedia. Un query básico con el tipo de medio especificado como all puede lucir así:
+
+[source, css]
+----
+@media (min-width: 700px) and (orientation: landscape) { ... }
+----
+
+*NOT*
+
+El operador not aplica a todo el query y retorna verdadero si es posible y sino retorna falso (como por ejemplo monochrome en un monitor a color o una ventana con un ancho mínimo de min-width: 700px en un monitor de 600px). +
+Un not negara un query si es posible pero no a todos los query posibles si están ubicados en una lista separada por comas. +
+El operador not no puede ser usado para negar un query individual, solo para un query completo. +
+Por ejemplo, el not en el siguiente query es evaluado al final:
+
+[source, css]
+----
+@media not (all and (monochrome)) { ... }
+----
+
+*ONLY*
+
+El operador only previene que navegadores antiguos que no soportan queries con funciones apliquen los estilos asignados:
+
+[source, HTML]
+----
+<link rel="stylesheet" media="only screen and (color)" href="Ejemplo.css" />
+----
+
+*Funciones multimedia*
+
+La mayoría de las funciones multimedia pueden ser precedidas por "min-" o "max-" para expresar "greater or equal to" o "less than or equal to". Esto elimina la necesidad de usar los símbolos "<" y ">" los cuales podrían causar conflictos con HTML y XML. +
+Si usted usa una función multimedia sin especificarle un valor, la expresión retornara verdadero si el valor es diferente de cero.
+
+*color*
+
+- Valor: \<color>  
+- Medio: media/visual  
+- Acepta prefijos min/max: si 
+
+Indica el numero de bits por componente de color del dispositivo de salida. Si el dispositivo no soporta colores, este valor es 0.
+
+*color-index*
+
+- Valor: \<integer>  
+- Medio: media/visual  
+- Acepta prefijos min/max: sí  
+
+Indica el numero de entradas en la tabla de colores para el dispositivo de salida.
+
+*aspect-ratio*
+
+- Valor: \<ratio>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+Describe el aspecto de una zona a mostrar en el dispositivo de salida. +
+Este valor consiste en enteros positivos separados por una barra ("/"). Esto representa la razón de aspecto de los pixeles horizontales (primer termino) a los pixeles verticales (segundo termino).
+
+[source, css]
+----
+@media screen and (min-aspect-ratio: 1/1) { ... }
+----
+
+*device-aspect-ratio*
+
+- Valor: \<ratio>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+Describe la proporción de aspecto del dispositivo de salida. +
+Este valor consiste de dos enteros positivos separados por una barra ("/"). +
+Este representa la proporción de aspecto de los pixeles horizontales (primer termino) a los pixeles verticales (segundo termino).
+
+[source, css]
+----
+@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }
+----
+
+*device-height*
+
+- Valor: \<length>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+Describe la altura del dispositivo de salida (ya sea la totalidad de la pantalla o página y no el área del documento a renderizar).
+
+*device-width*
+
+- Valor: \<length>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+Describe la anchura del dispositivo de salida (ya sea la totalidad de la pantalla o página y no el área del documento a renderizar).
+
+[source, HTML]
+----
+<link rel="stylesheet" media="screen and (max-device-width: 799px)"/>
+----
+
+*grid*
+
+- Valor: \<integer>  
+- Medio: all  
+- Acepta prefijos min/max: no  
+
+Determina cuando el dispositivo de salida es un dispositivo de cuadrícula o de mapa de bits. Si el dispositivo esta basado en una cuadrícula (como una terminal TTY o una pantalla de teléfono de solo texto), el valor sera 1, de lo contrario sera 0.
+
+*height*
+
+- Valor: \<length>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+La función height describe la altura de la superficie a renderizar en el dispositivo de salida (como la altura de una ventana o la bandeja de papel en una impresora).
+
+*Monochrome*
+
+- Valor: \<integer>  
+- Medio: media/visual  
+- Acepta prefijos min/max: sí  
+
+Indica el número de bits por pixel en un dispositivo monocromático (escala de grises). Si el dispositivo no es monocromático el valor sera 0.
+
+*orientation*
+
+- Valor: landscape | portrait  
+- Medio: media/visual  
+- Acepta prefijos min/max: no  
+
+Indica cuando el dispositivo esta en modo landscape (el ancho de la pantalla es mayor al alto) o modo portrait (el alto de la pantalla es mayor al ancho).
+
+*resolution*
+
+- Valor: \<resolution>  
+- Medio: bitmap  
+- Acepta prefijos min/max: sí  
+
+Indica la resolución (densidad de pixeles) del dispositivo de salida. La resolución puede ser especificada en puntos por pulgada (dpi) o en puntos por centímetros (dpcm).
+
+*scan*
+
+- Valor: progressive | interlace  
+- Medio: media/tv  
+- Acepta prefijos min/max: no  
+
+Describe el proceso de exploración de televisión de los dispositivos de salida.
+
+*width*
+
+- Valor: \<length>  
+- Medio: media/visual, media/tactile  
+- Acepta prefijos min/max: sí  
+
+La función width describe el ancho de la superficie a renderizar en el dispositivo de salida (como el ancho de una ventana de un documento o el ancho de la bandeja de papel en una impresora).
