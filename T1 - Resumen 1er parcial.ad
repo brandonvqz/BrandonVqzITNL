@@ -318,3 +318,6 @@ ch Se refiere al ancho del caracter cero. +
 .UnEm { font-size: 1em; }
 .UnRem { font-size: 1rem; }
 .UnEx { font-size: 1ex; }
+----
+
+//Algunas cosas de este documento me sirven a la hora del estudio, por eso algunos textos pueden verse como "Copy/paste" creame que si los he leido, el examen me confundio un poco al pasar de Importancia a Especificidad, por la inline style, como se repite, no entiendo muy bien el orden.
