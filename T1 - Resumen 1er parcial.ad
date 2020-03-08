@@ -6,6 +6,8 @@
 
 image::https://s3-us-west-2.amazonaws.com/devcodepro/media/tutorials/modelo-caja-css-t1.jpg[Modelo de cajas]
 
+//Deje como tal por que ya tenia definido esta parte, o sea, el texto de Modelo de Cajas solo lo adapte a los requerimientos de la tarea, no considere reescribir esto debido a que lo "define" claro, me sirve como nota.
+
 Cada elemento dentro de un documento HTML se encuentra contenido en una caja, la cual cuenta con una serie de propiedades que afectaran el cómo se muestran los elementos. +
 Cada caja cuenta con un *Height y Width* (altura - anchura), ademas de poseer un *Padding, Outline, Border y Margin* (relleno - contorno - borde - margen) siendo estos quienes brindan un mayor control sobre los elementos a la hora de organizarlos. +
 
