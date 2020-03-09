@@ -1,0 +1,151 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --intTamañoAncho: calc(100%-10px);
+}
+
+div{
+    position: relative;
+}
+
+ul{
+    list-style: none;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin: 0px 10px;
+}
+
+i{
+    margin-left: calc((10% - 10px));
+}
+
+li{
+    display: inline-block;
+    width: calc((100% / 3) - 20px);
+    height: 100%;
+    text-align: center;
+    background: darkred;
+    border-radius: 5px;
+    border: 3px solid black;
+}
+
+a{
+    text-decoration: none;
+    font: bold 35px Arial;
+    color: white;
+}
+
+label, input, select{
+    margin: 10px;
+    font: bold 24px Arial;
+    width: calc((100% - 10px));
+}
+
+select{
+    font: 23px Arial;
+}
+
+form{
+    margin: 10px;
+}
+
+#divDropdownList, #divContenidoForm, #divPlatillosOrdenados{
+    margin: 10px 20px;
+}
+
+#divContenidoForm, #divPlatillosOrdenados{
+    display: inline-block;
+    outline: 3px black solid;
+}
+
+#divDropdownList{
+    margin-bottom: 0;
+    width: var(--intTamañoAncho);
+    height: 50px;
+}
+
+#divContenidoForm{
+    width: calc((80% - 20px) - 20px);
+    height: 100%;
+    background: dimgray;
+}
+
+#divPlatillosOrdenados{
+    float: right;
+    width: calc(20% - 20px);
+    margin-left: 0;
+    height: 100vmax;
+    background: brown;
+    font: bold 24px Arial;
+    color: white;
+    text-align: center;
+}
+
+#txtProd1, #intCantidadP{
+    width: calc((80% / 3) - 20px);
+}
+
+#Mesa{
+    float: left;
+    background: darkorange;
+    width: calc(100% - 10px);
+}
+
+#Productos{
+    background: darkred;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.btnRegistrarProducto{
+    width: calc(100% - 20px);
+}
+
+.btnRegistrarOrden{
+    margin: 20px 0px;
+}
+
+#divPlatillosOrdenados > div{
+    margin: 20px 0px;
+}
+
+#Menu{
+    background: red;
+    height: 5%;
+    margin-top: 0px;
+}
+
+#opcGraficas:hover, #opcPedidos:hover, #opcOrdenar:hover{
+    background: red;
+}
+
+#opcGraficas:hover ul{
+    display: block;
+}
+
+ul li ul{
+    position: absolute;
+    width: 100%;
+    display: none;
+    z-index: 10;
+}
+
+ul li ul li{ 
+    background: rgb(77, 0, 0); 
+    display: block;
+}
+
+ul li ul li:hover{
+    background: rgb(134, 0, 0);
+}
+
+ul li ul li a{
+    display: block;
+    font-size: 25px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>T3 - Formulario Proyecto.</title>
+        <link rel="stylesheet" href="CSS/T3 - Formulario ProyectoCSS.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <div id="divDropdownList">
+        <ul id="lstCabecera">
+            <li class="mainOption" id="opcOrdenar"><i class="material-icons" style="font-size:30px;color:white">content_paste</i><a href="#" > Ordenar</a></li>
+            <li class="mainOption" id="opcPedidos"><i class="material-icons" style="font-size:30px;color:white">access_time</i><a href="#" > Pedidos</a></li>
+            <li class="mainOption" id="opcGraficas">
+                <i class="material-icons" style="font-size:30px;color:white">desktop_windows</i>
+                <a href="#" > Graficas</a>
+                <ul>
+                    <li class="subOption" id="masVendido">
+                        <a href="#">Productos mas vendidos</a>
+                    </li>
+                    <li class="subOption" id="consumoIngredientes">
+                        <a href="#">Ingredientes mas consumidos</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div id="divContenidoForm">
+            <form method="post" action="#">
+
+                <div id="Mesa">
+                    <label>Numero de mesa:</label>
+                    <input type="text" name="txtNoMesa" size="30"><br>
+        
+                    <label>¿Buffet?</label>
+                    <select id="blnBuffet">
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select>
+                  
+                    <label>Cantidad de personas en mesa:</label>
+                    <input type="text" name="txtNoPersonas" size="45"><br>
+                    
+                    <div id="Productos">
+                        <label>Productos:</label>
+                        <select id="txtProd1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input id="intCantidadP" type="number" name="txtCantidadP" size="45"><br>
+                        <input class="btnRegistrarProducto" type="submit" value="Registrar producto">
+                    </div>
+                </div>
+
+                <input class="btnRegistrarOrden" type="submit" value="Registrar orden">
+            </form>
+        </div>
+        <div id="divPlatillosOrdenados">
+            <div id="Menu">Menu</div>
+            <div>1. Platillo 1</div>
+            <div>2. Platillo 2</div>
+            <div>3. Platillo 3</div>
+            <div>4. Platillo 4</div>
+            <div>5. Platillo 5</div>
+        </div>
+    </div>
+</html>
