@@ -5,8 +5,11 @@
         <title>T3 - Formulario Proyecto.</title>
         <link rel="stylesheet" href="CSS/T3 - Formulario ProyectoCSS.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
-    <div id="divDropdownList">
+    <div id="divDropdownList" class="list-group">
         <ul id="lstCabecera">
             <li class="mainOption" id="opcOrdenar"><i class="material-icons" style="font-size:30px;color:white">content_paste</i><a href="#" > Ordenar</a></li>
             <li class="mainOption" id="opcPedidos"><i class="material-icons" style="font-size:30px;color:white">access_time</i><a href="#" > Pedidos</a></li>
@@ -15,47 +18,48 @@
                 <a href="#" > Graficas</a>
                 <ul>
                     <li class="subOption" id="masVendido">
-                        <a href="#">Productos mas vendidos</a>
+                        <a class="list-group-item list-group-item-action list-group-item-danger" href="#">Productos mas vendidos</a>
                     </li>
                     <li class="subOption" id="consumoIngredientes">
-                        <a href="#">Ingredientes mas consumidos</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Ingredientes mas consumidos</a>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
     <div>
-        <div id="divContenidoForm">
+        <div id="divContenidoForm" class="container-fluid container p-3 my-3 bg-dark text-white">
             <form method="post" action="#">
 
                 <div id="Mesa">
                     <label>Numero de mesa:</label>
-                    <input type="text" name="txtNoMesa" size="30"><br>
+                    <input class="form-control" type="text" name="txtNoMesa" size="30"><br>
         
                     <label>¿Buffet?</label>
-                    <select id="blnBuffet">
+                    <select class="form-control" id="blnBuffet">
                         <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select>
                   
                     <label>Cantidad de personas en mesa:</label>
-                    <input type="text" name="txtNoPersonas" size="45"><br>
+                    <input class="form-control" type="text" name="txtNoPersonas" size="45"><br>
                     
                     <div id="Productos">
-                        <label>Productos:</label>
-                        <select id="txtProd1">
+                        <label>Platillo:</label>
+                        <select id="txtProd1" class="form-control">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <input id="intCantidadP" type="number" name="txtCantidadP" size="45"><br>
-                        <input class="btnRegistrarProducto" type="submit" value="Registrar producto">
+                        <label>Cantidad:</label>
+                        <input class="form-control" id="intCantidadP" type="number" name="txtCantidadP" size="45"><br>
+                        <button type="button" class="btnRegistrarProducto btn btn-outline-danger" type="submit">Registrar Producto</button>
                     </div>
                 </div>
 
-                <input class="btnRegistrarOrden" type="submit" value="Registrar orden">
+                <button type="button" class="btnRegistrarOrden btn btn-outline-success" type="submit">Registrar Orden</button>
             </form>
         </div>
         <div id="divPlatillosOrdenados">
