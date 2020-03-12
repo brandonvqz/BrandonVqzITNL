@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>T3 - Formulario Proyecto.</title>
+        <link rel="stylesheet" href="CSS/T4 - Formulario BootstrapCSS.css">
+        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+        <script src="JS/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+    </head>
+    
+    <body class="bg-dark text-white"></body>
+
+    <nav class="navbar navbar-expand-sm bg-danger navbar-dark sticky-top .navbar-expand-xl|lg|md|sm justify-content-center">
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">&#128220 Registrar Orden</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">&#128337 Ordenes Activas</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                &#128202 Graficas
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Ingredientes mas usados</a>
+              <a class="dropdown-item" href="#">Platillos mas vendidos</a>
+              <a class="dropdown-item" href="#">Platillos menos vendidos</a>
+            </div>
+          </li>
+        </ul>
+        
+    </nav>
+
+    <div id="divContenidoForm" class="container-fluid container p-3 my-3 bg-dark text-white .container-sm|md|lg|xl">
+        
+        <form method="post" action="#">
+            
+            <label>Numero de mesa:</label>
+            
+            <input class="form-control" type="text" name="txtNoMesa" size="30"><br>
+            
+            <label>¿Buffet?</label>
+                
+            <select class="form-control" id="blnBuffet">
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select><br>
+                
+            <label>Cantidad de personas en mesa:</label>
+
+            <input class="form-control" type="text" name="txtNoPersonas" size="45"><br>
+
+            <label>Platillo:</label>
+
+            <select id="txtProd1" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            
+            <label>Cantidad:</label>
+
+            <input class="form-control" id="intCantidadP" type="number" name="txtCantidadP" size="45"><br>
+
+            <button type="button" id="btnRegistrarPlatillo" class="btn btn-outline-danger" type="submit">Registrar Platillo</button>
+
+        </form>
+
+        <button type="button" id="btnRegistrarOrden" class="btn btn-outline-success" type="submit">Registrar Orden</button>
+
+    </div>
+    
+    <div id="divContenidoMenu" class="container-fluid container p-3 my-3 bg-dark text-white .container-sm|md|lg|xl">
+        
+        <ul class="list-group">
+            <li class="list-group-item list-group-item list-group-item-warning">Menu</li>
+            <li class="list-group-item list-group-item list-group-item-danger">1. Platillo</li>
+            <li class="list-group-item list-group-item list-group-item-danger">2. Platillo</li>
+            <li class="list-group-item list-group-item list-group-item-danger">3. Platillo</li>
+        </ul> 
+
+    </div>
+
+</html>
