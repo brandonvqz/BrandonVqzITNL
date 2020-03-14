@@ -1,0 +1,63 @@
+== Instituto Tecnológico de México Campus Nuevo Laredo
+*Alumno:* Brandon Vazquez Camarillo. +
+*No. Control:* 17100307. +
+
+*Atributos de Eventos*:
+|===
+|Evento | Descripcion
+
+|OnLoad
+|El evento "OnLoad" es lanzado cuando el agente de usuario termina de cargar una página o todos los marcos en un ser de marcos. Este evento es exclusivo de los elementos HTML body yHTML framset.
+
+|OnUnload
+|El evento "OnUnload" es disparado cuando el agente de usuario retira el documento de una ventana o marco. Este evento es exclusivo de los elementos HTML body y HTML framset.
+
+|OnClick
+|El evento "OnClick" ocurre cuando se realiza un click sobre el elemento.
+
+|OnDblClick
+|El evento "OnDblClick" es ejecutado cuando se hace un doble click sobre el elemento.
+
+|OnMouseDown
+|El evento "OnMouseDown" es lanzado cuando el botón del mouse es presionado sobre el elemento (independientemente de que sea soltado o no).
+
+|OnMouseUp 
+|El evento "OnMouseUp" es disparado cuando el botón del mouse se suelta sobre el elemento.
+
+|OnMouseOver 
+|El evento "OnMouseOver" ocurre cuando el mouse es puesto sobre el elemento.
+
+|OnMouseMove 
+|El evento "OnMouseMove" es ejecutado cuando el mouse es movido mientras está sobre el elemento.
+
+|OnMouseOut 
+|El evento "OnMouseOut" es lanzado cuando el mouse se quita de encima de un documento.
+
+|OnFocus: 
+|El envento "OnFocus" es disparado cuando un elemento recibe el enfoque, bien sea a través del mouse o por navegación tabulada. Este evento es exclusivo de aquellos elementos que pueden recibir el enfoque: HTML a, HTML area, HTML label, HTML input, HTML select, HTML textarea, y HTML button.
+
+|OnBlur
+|El evento "OnBlur" ocurre cuando el elemento pierde el enfoque bien sea a través del mouse o por navegación tabulada. Este evento es exclusivo de aquellos elementos que pueden recibir el enfoque.
+
+|OnKeyPress 
+|El evento "OnKeyPress" es ejecutado cuando una tecla es presionada y luego soltada mientras el elemento tiene el enfoque. Este evento es exclusivo de aquellos elementos que pueden recibir el enfoque.
+
+|OnKeyDown
+|El evento "OnKeyDown" es lanzado cuando una tecla es presionada (independientemente de que sea solatada o no) mientras el elemento tiene el enfoque. Este evento es exclusivo de aquellos elementos que pueden recibir el enfoque.
+
+|OnKeyUp 
+|El evento "OnKeyUp" es disparado cuando una tecla es solatada mientras el elemento tiene el enfoque. Este evento es exclusivo de aquellos elementos que pueden recibir el enfoque.
+
+|OnSubmit 
+|El evento "OnSubmit" ocurre cuando el formulario es enviado. Este evento es exclusivo del elemento HTML form.
+
+|OnReset 
+|El evento "OnReset" es ejecutado cuando el formulario es reestablecido a sus valores por defecto. Este evento es exclusivo del elemento HTML form.
+
+|OnSelect 
+|El evento "OnSelect" es lanzado cuando un usuario selcciona texto en un campo de texto. Este evento es exclusivo de los elementos HTML input y HTML textarea.
+
+|OnChange 
+|El evento "OnChange" es disparado cuando un control pierde el enfoque y su valor ha sido modificado desde que recibió el enfoque por última vez. Este evento es exclusivo de los elementos HTML input, HTML select y HTML textarea.
+
+|===
